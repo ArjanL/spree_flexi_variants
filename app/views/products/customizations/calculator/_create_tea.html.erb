@@ -1,0 +1,68 @@
+<% content_for :head do %>
+
+  <%= javascript_tag do %>
+  	function calculate_create_tea_price(amount, naam) {
+		switch(naam){
+			case 'appel':
+					return <%= calculator.preferred_appel %> * amount; 
+				break;
+			case 'papaya':
+				    return <%= calculator.preferred_papaya %> * amount;
+				break;
+			case 'zonneroosjes':
+				    return <%= calculator.preferred_zonneroosjes %> * amount;
+				break;     				     
+			case 'sinaasappelschillen':
+				    return <%= calculator.preferred_sinaasappelschillen %> * amount;
+				break;
+			case 'brandnetel':
+				    return <%= calculator.preferred_brandnetel %> * amount;
+				break;
+			case 'ginkgo':
+				    return <%= calculator.preferred_ginkgo %> * amount;
+				break;  				  						  		
+			case 'lemongrass':
+				    return <%= calculator.preferred_lemongrass %> * amount;
+				break;
+			case 'nanamint':
+				    return <%= calculator.preferred_nanamint %> * amount;
+				break;
+			case 'sagebladeren':
+				    return <%= calculator.preferred_sagebladeren %> * amount;
+				break;		
+			case 'maretak':
+				    return <%= calculator.preferred_maretak %> * amount;
+				break; 
+			case 'karwij':
+				    return <%= calculator.preferred_karwij %> * amount;
+				break;   			
+			case 'venkel':
+				    return <%= calculator.preferred_venkel %> * amount;
+				break;  
+			case 'groenehaver':
+				    return <%= calculator.preferred_groenehaver%> * amount;
+				break;   				    		
+			case 'hibiscusbloesem':
+				    return <%= calculator.preferred_hibiscusbloesem %> * amount;
+				break; 
+			case 'anijszaad':
+				    return <%= calculator.preferred_anijszaad %> * amount;
+				break; 		
+			case 'kamille':
+				    return <%= calculator.preferred_kamille %> * amount;
+				break;
+			case 'bamboobladeren':
+				    return <%= calculator.preferred_bamboobladeren %> * amount;
+				break;  
+			case 'pepermuntblad':
+				    return <%= calculator.preferred_pepermuntblad %> * amount;
+				break;
+			case 'rozenbladeren':
+				    return <%= calculator.preferred_rozenbladeren %> * amount;
+				break;    
+		}
+		// $('#maxam').text(amount);        
+    }
+    
+  <% end %>
+<% end %>

@@ -17,19 +17,24 @@
         variant_price_map[<%= v.id %>]= <%= v.price %>;
       <% end %>
     <% end %>
+	
 
 
     // we start off the page w/ a known base price, a known set of
     // possible configurations (ad_hoc_option_values), and no customizations
 
     // 'updatePrice()' takes the base price + current 'configuration' adjustments + 'customization' adjustments
-
-    var base_price=<%= @product.price %>;
+	<%
+		price_btw = @product.price
+		price_btw = price_btw / 100
+		price_btw = price_btw * 106
+	%>
+    var base_price=<%= price_btw %>;
 
     // keep track of ad_hoc adjustments
     var price_modifier_map={};
 
-    <%  @product.ad_hoc_option_types.each do |pot| %>
+    <% @product.ad_hoc_option_types.each do |pot| %>
       <% pot.option_values.each do |pov| %>
         price_modifier_map[<%= pov.id %>]= <%= pov.price_modifier %>;
       <% end %>
@@ -47,19 +52,22 @@
     $(function() {
 
       // watch for variant changes
-      $("#product-variants input[type='radio']").change(function() {
+      $("#product-customizations").change(function() {
+     		
         updatePrice();
+        //updateAmount();
       });
 
       // 'watch' our configurations
-      $('.ad-hoc-option-select').change(function() {
-
+      $('create-tea-select').change(function() {
+			
         // get _every_ option drop down and recalculate product price
         // do this immediately, since we are not waiting on the results of the exlusions post
         updatePrice();
       });
 
       updatePrice(); // set the initial price
+      //updateAmount();
     } // ready
   ); // ready
 
@@ -71,33 +79,186 @@
   function compute_variant_price_diff(base_price) {
     var variant_price=0;
 
-    $("#product-variants input[type='radio']:checked").each (function() {
+    $("#product_customizations option:selected").each (function() {
       variant_price=variant_price_map[$(this).val()];
     });
 
     <% if @product.has_variants? %>
       return variant_price-base_price;
     <% else %>
-      return variant_price;  // don't return a negative number if we don't have any variants
+      return variant_price; // don't return a negative number if we don't have any variants
     <% end %>
 
   }
-
+  
+  
+// TEA
   function compute_configuration_price() {
     var configuration_price=0;
-
-    // for selects or checkboxes
-    $("select.ad-hoc-option-select, input:checked.ad-hoc-option-select").each(function() {
-      // the :prompt=>'None' in the select tag yields an empty string, which I can't use in the price calcuation
-      var val=$(this).val();
-
-      if (isNumeric(val)) {
-        configuration_price+=price_modifier_map[val];
+    var max_amount=$('#maxam').val();
+	// APPEL
+    $(".create_tea_appel option:selected").each(function() {
+      var amount=$(this).val();
+      var naam= 'appel';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
       }
     });
 
+   
+    // PAPAYA
+    $(".create_tea_papaya option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='papaya';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+
+    // Zonneroosjes
+    $(".create_tea_zonneroosjes option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='zonneroosjes';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+	// Sinaasappelschillen
+    $(".create_tea_sinaasappelschillen option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='sinaasappelschillen';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+//
+    // Brandnetel
+    $(".create_tea_brandnetel option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='brandnetel';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Ginkgo
+    $(".create_tea_ginkgo option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='ginkgo';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Lemongrass
+    $(".create_tea_lemongrass option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='lemongrass';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Nanamint
+    $(".create_tea_nanamint option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='nanamint';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Sagebladeren 
+    $(".create_tea_sagebladeren option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='sagebladeren';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    }); 
+    // Maretak 
+    $(".create_tea_maretak option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='maretak';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Karwij 
+    $(".create_tea_karwij option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='karwij';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });    
+    // Venkel
+    $(".create_tea_venkel option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='venkel';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Venkel
+    $(".create_tea_groenehaver option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='groenehaver';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Hibiscus Bloesem   
+    $(".create_tea_hibiscusbloesem option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='hibiscusbloesem';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Anijszaad
+    $(".create_tea_anijszaad option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='anijszaad';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Kamille
+    $(".create_tea_kamille option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='kamille';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+    // Bamboobladeren
+    $(".create_tea_bamboobladeren option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='bamboobladeren';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    }); 
+    // Rozenbladeren
+    $(".create_tea_rozenbladeren option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='rozenbladeren';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });       
+    // Pepermuntblad
+    $(".create_tea_pepermuntblad option:selected").each(function() {
+      var amount=$(this).val();
+      var naam='pepermuntblad';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });                    
+
+	// Return Prijs
     return configuration_price;
+    //return max_amount
   }
+	
+
 
   function compute_customization_price() {
     var price=0;
@@ -107,24 +268,25 @@
       var val=$(this).val();
 
       if (isNumeric(val)) {
-        price  +=  parseFloat(val);
+        price += parseFloat(val);
       }
     });
 
     return price;
   }
 
-
   function updatePrice() {
 
-    var cur_variant_price_diff       = compute_variant_price_diff(base_price);
-    var cur_configuration_price =  compute_configuration_price();
-    var cur_customization_price =  compute_customization_price();
+    var cur_variant_price_diff = compute_variant_price_diff(base_price);
+    var cur_configuration_price = compute_configuration_price();
+    var cur_customization_price = compute_customization_price();
     var cur_price =base_price + cur_variant_price_diff + cur_configuration_price + cur_customization_price;
-
+    
     $('.price.selling').text(cur_price.toFixed(2)).formatCurrency({region: "<%= I18n.locale.to_s %>"});
   }
+  
 
+ 
   //]]>
   </script>
 <% end %>

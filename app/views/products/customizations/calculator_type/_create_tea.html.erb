@@ -1,0 +1,299 @@
+<% # render the (possibly shared) calculator %>
+<% ## FRUIT ## %>
+<% class_appel = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("appel").name}" %>
+<% class_papaya = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("papaya").name}" %>
+<% class_zonneroosjes = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("zonneroosjes").name}" %>
+<% class_sinaasappelschillen = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("sinaasappelschillen").name}" %>
+<% class_brandnetel = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("brandnetel").name}" %>
+<% class_ginkgo = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("ginkgo").name}" %>
+<% class_lemongrass = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("lemongrass").name}" %>
+<% class_nanamint = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("nanamint").name}" %>
+<% class_sagebladeren = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("sagebladeren").name}" %>
+
+<% class_maretak = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("maretak").name}" %>
+<% class_karwij = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("karwij").name}" %>
+<% class_venkel = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("venkel").name}" %>
+<% class_groenehaver = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("groenehaver").name}" %>
+<% class_hibiscusbloesem = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("hibiscusbloesem").name}" %>
+<% class_anijszaad = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("anijszaad").name}" %>
+<% class_kamille = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("kamille").name}" %>
+
+<% class_bamboobladeren = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("bamboobladeren").name}" %>
+<% class_rozenbladeren = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("rozenbladeren").name}" %>
+<% class_pepermuntblad = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("pepermuntblad").name}" %>
+
+<%= render :partial => "products/customizations/calculator/#{calculator_name(product_customization_type)}",
+           :locals => {:calculator=>product_customization_type.calculator} %>
+
+  <% # add the 'change' listener for this particular file input, which will make use of the calculator above %>
+
+  <% content_for :head do %>
+  <%= stylesheet_link_tag 'jquery-ui', 'progressbar' %>
+<%= javascript_include_tag 'jquery-ui', 'jquery.progressbar' %>
+      <%= javascript_tag do %>
+			$(function() {
+			$("tr:even").css("background-color", "#fff");
+			$("tr:odd").css("background-color", "#E9EAE4");
+			$("divAmount").progressbar({ value: 60 }); 
+			});
+	  <% end %>
+    
+      <style type="text/css">
+   		.fiveGram{
+   			width: 5%;
+   		}
+      
+    	#cb_list {
+			list-style-type: none;
+			margin: 0;
+    	 }
+    	 .even {
+    	 	background-color: blue;
+    	 }
+		.odd {
+			background-color: gray;
+			
+   		}
+   		label {
+			font-weight:500;   			
+   		}
+   		table th{
+   			font-weight: 700;
+   			background-color: #90774F;
+   		}
+		tr {
+			border-bottom: 0.1px solid #dddddd;
+			height: 10px;
+		}
+   		select {
+    	-moz-border-radius: 4px;
+    	-moz-box-shadow: 1px 1px 5px #cfcfcf inset;
+    	border: 1px solid #cfcfcf;
+    	vertical-align: middle;
+    	background-color: transparent;
+		text-align: center;
+		}
+		fieldset legend{
+			text-align: center;
+			color: #fff;
+		}
+		legend{
+			text-align: center;
+			color: #fff;
+		}
+option {
+    background-color: #fef5e6;
+    border-bottom: 1px solid #ebdac0;
+    border-right: 1px solid #d6bb86;
+    border-left: 1px solid #d6bb86;
+}
+option:hover {
+    cursor: pointer;
+}
+#customblend_tab {
+	margin-left: 0;
+	background-color: #291603;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+ display: block;
+
+	margin-bottom: 20px;
+}
+.opt_desc{
+	text-align: center;
+}
+    </style>
+
+  <% end %>
+  <div id="divAmount" class="ui-progressbar ui-widget ui-widget-content ui-corner-all">
+
+		<div class="ui-progressbar-value ui-widget-header ui-corner-left" style="width:60%;"></div>
+
+  </div>
+  <br />
+  <ul id="cb_list">
+  	<div id="customblend_tab">
+	<%= field_set_tag product_customization_type.presentation do %>
+	<table style="width: 266px;">
+	<th>Melange</th><th>Toevoegen</th><th>Prijs&nbsp;5g</th>
+	<tr>
+          <% # APPEL # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("appel") %>
+      		<td><label for="<%= class_appel %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_appel %></td><td><strong class="opt_desc"><%= option.description %></strong></td>
+    </tr>
+    <tr>
+    <li>
+    	<% # PAPAYA # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("papaya") %>
+      	<td><label for="<%= class_papaya %>"><%= option.presentation %><%= option.description %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_papaya %></td><td><%= option.description %></td>
+    </li>
+    </tr>
+    <tr>
+    <li>
+    	<% # ZONNEROOSJES # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("zonneroosjes") %>
+      	<td><label for="<%= class_zonneroosjes %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_zonneroosjes %></td><td><%= option.description %></td>
+    </li>
+    </tr>
+    <tr>
+	<li>
+    	<% # SINAASAPPELSCHILLEN # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("sinaasappelschillen") %>
+      	<td><label for="<%= class_sinaasappelschillen %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_sinaasappelschillen %><td></td><%= option.description %></td>
+    </li>
+	</tr>
+	<tr>
+	<li>
+    <% # brandnetel # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("brandnetel") %>
+      	<td><label for="<%= class_brandnetel %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_brandnetel %><td></td><%= option.description %></td>
+    </li>
+    </tr>
+    <tr>
+	<li>
+    <% # ginkgo # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("ginkgo") %>
+      	<td><label for="<%= class_ginkgo %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_ginkgo %><td></td><%= option.description %></td>
+    </li>
+    </tr>
+    <tr>
+    <li>        
+    <% # lemongrass # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("lemongrass") %>
+      	<td><label for="<%= class_lemongrass %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_lemongrass %><td></td><%= option.description %></td>
+    </li>
+    </tr>
+    <tr>  
+    <li>        
+    <% # nanamint # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("nanamint") %>
+      	<td><label for="<%= class_nanamint %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_nanamint %></td><td><%= option.description %></td>
+    </li>
+    </tr>
+    <tr>  
+     <li>        
+    <% # sagebladeren # %>
+      <% option = product_customization_type.customizable_product_options.find_by_name("sagebladeren") %>
+      	<td><label for="<%= class_sagebladeren %>"><%= option.presentation %></label></td>
+      		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_sagebladeren %></td><td><%= option.description %></td>
+    </li>
+    </tr>
+    </table>
+	</div>
+    <% # KRUIDEN # %>
+  	<div id="customblend_tab">     
+	<legend>Kruiden</legend>
+	<table>
+	<th>Melange</th><th>Toevoegen</th><th>Prijs&nbsp;5g</th>
+	<tr>
+    <li>
+      <% # Maretak # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("maretak") %>
+      		<td><label for="<%= class_maretak %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_maretak %></td><td><strong><%= option.description %></strong></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>
+    <li>
+      <% # Karwij # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("karwij") %>
+      		<td><label for="<%= class_karwij %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_karwij %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>
+    <li>
+      <% # Venkel # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("venkel") %>
+      		<td><label for="<%= class_venkel %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_venkel %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>
+    <li>
+      <% # Groene haver # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("groenehaver") %>
+      		<td><label for="<%= class_groenehaver %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_groenehaver %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr> 
+    <li>
+      <% # Hibiscus Bloesem # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("hibiscusbloesem") %>
+      		<td><label for="<%= class_hibiscusbloesem %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_hibiscusbloesem %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>              
+    <li>
+      <% # Anijszaad # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("anijszaad") %>
+      		<td><label for="<%= class_anijszaad %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_anijszaad %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>
+    <li>
+      <% # Kamille # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("kamille") %>
+      		<td><label for="<%= class_kamille %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_kamille %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    </table>
+    </div>
+    <div id="customblend_tab">
+  	<legend>Specerijen</legend>
+	<table>
+	<th>Melange</th><th>Toevoegen</th><th>Prijs&nbsp;5g</th>
+	<tr>
+	<li>
+      <% # Bamboobladeren # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("bamboobladeren") %>
+      		<td><label for="<%= class_bamboobladeren %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_bamboobladeren %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>
+    <li>
+      <% # Pepermuntblad # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("pepermuntblad") %>
+      		<td><label for="<%= class_pepermuntblad %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_pepermuntblad %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+    </tr>
+    <tr>
+    <li>
+      <% # Rozenbladeren # %>
+      	<% option = product_customization_type.customizable_product_options.find_by_name("rozenbladeren") %>
+      		<td><label for="<%= class_rozenbladeren %>"><%= option.presentation %></td><td>
+      		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_rozenbladeren %></td><td><%= option.description %></td>
+      </label>  
+    </li>
+	</tr>
+    <% # the price is stored here on change, and later collected by the product-wide updatePrice() %>
+    </table>
+    </div>
+ </ul>    
+    <%#=hidden_field_tag "maxam", "0", :class => "maxam" %>
+    <%#=hidden_field_tag "customization_price", "0", :class => "customization_price" %>
+<% end # field_set_tag %>
