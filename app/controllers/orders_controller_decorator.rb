@@ -22,7 +22,7 @@ OrdersController.class_eval do
       @order.add_variant(Variant.find(variant_id), ad_hoc_option_value_ids, product_customizations, quantity) if quantity > 0
     end if params[:variants]
 
-    redirect_to cart_path
+    respond_with(@order) { |format| format.html { redirect_to cart_path } }
   end
 
 end
