@@ -5,7 +5,7 @@
     <%= "<h4>*#{t(:not_all_combinations_available)}</h4>".html_safe if !@product.ad_hoc_variant_exclusions.empty? %>
 
     <%= field_set_tag t(:select_variant_options) do %>
-      <ol>
+      <ul class="ahot">
         <% @product.ad_hoc_option_types.each do |ahot| %>
           <li>
           <% ot=ahot.option_type %>
@@ -22,11 +22,11 @@
             <label><%= ot.presentation %></label>
             <%= select_tag "ad_hoc_option_values[#{ahot.id}]",
               options_for_select(ad_hoc_option_value_options(ahot.option_values)),
-             :include_blank => 'None', :class => class_str %>
+             :include_blank => 'Nee', :class => class_str %>
           <% end %>
           </li>
         <% end %>  <%# each %>
-      </ol>
+      </ul>
     <% end %> <%# field_set %>
   </div>
 <% end %>
