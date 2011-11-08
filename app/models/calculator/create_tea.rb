@@ -39,14 +39,14 @@ class Calculator::CreateTea < Calculator
     ####################### FRUIT ######################
     [
      CustomizableProductOption.create(:name=>"appel", :presentation=>"Appel",
-    CustomizableProductOption.create(:name=>"papaya", :presentation=>"Papaya"), #,
-    CustomizableProductOption.create(:name=>"zonneroosjes", :presentation=>"Zonneroosjes"), #,
-    CustomizableProductOption.create(:name=>"sinaasappelschillen", :presentation=>"Sinaasappelschillen"), #,
-    CustomizableProductOption.create(:name=>"brandnetel", :presentation=>"Brandnetel"), #,
-    CustomizableProductOption.create(:name=>"ginkgo", :presentation=>"Ginkgo"), #,
-    CustomizableProductOption.create(:name=>"lemongrass", :presentation=>"Lemongrass"), #,
-    CustomizableProductOption.create(:name=>"nanamint", :presentation=>"Nanamint"), #,
-    CustomizableProductOption.create(:name=>"sagebladeren", :presentation=>"Sagebladeren"), #,
+    CustomizableProductOption.create(:name=>"papaya", :presentation=>"Papaya"),
+    CustomizableProductOption.create(:name=>"zonneroosjes", :presentation=>"Zonneroosjes"),
+    CustomizableProductOption.create(:name=>"sinaasappelschillen", :presentation=>"Sinaasappelschillen"),
+    CustomizableProductOption.create(:name=>"brandnetel", :presentation=>"Brandnetel"),
+    CustomizableProductOption.create(:name=>"ginkgo", :presentation=>"Ginkgo"),
+    CustomizableProductOption.create(:name=>"lemongrass", :presentation=>"Lemongrass"),
+    CustomizableProductOption.create(:name=>"nanamint", :presentation=>"Nanamint"),
+    CustomizableProductOption.create(:name=>"sagebladeren", :presentation=>"Sagebladeren"),
 
 	####################### KRUIDEN ######################
 	
