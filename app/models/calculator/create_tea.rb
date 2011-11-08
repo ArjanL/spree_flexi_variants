@@ -38,7 +38,7 @@ class Calculator::CreateTea < Calculator
   def create_options
     ####################### FRUIT ######################
     [
-     CustomizableProductOption.create(:name=>"appel", :presentation=>"Appel",
+     CustomizableProductOption.create(:name=>"appel", :presentation=>"Appel"),
     CustomizableProductOption.create(:name=>"papaya", :presentation=>"Papaya"),
     CustomizableProductOption.create(:name=>"zonneroosjes", :presentation=>"Zonneroosjes"),
     CustomizableProductOption.create(:name=>"sinaasappelschillen", :presentation=>"Sinaasappelschillen"),
