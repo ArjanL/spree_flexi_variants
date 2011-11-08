@@ -14,12 +14,12 @@ OrdersController.class_eval do
     params[:products].each do |product_id,variant_id|
       quantity = params[:quantity].to_i if !params[:quantity].is_a?(Hash)
       quantity = params[:quantity][variant_id].to_i if params[:quantity].is_a?(Hash)
-      @order.add_variant(Variant.find(variant_id), ad_hoc_option_value_ids, product_customizations, quantity) if quantity > 0
+      @order.add_variant(Variant.find(variant_id), product_customizations, quantity) if quantity > 0
     end if params[:products]
 
     params[:variants].each do |variant_id, quantity|
       quantity = quantity.to_i
-      @order.add_variant(Variant.find(variant_id), ad_hoc_option_value_ids, product_customizations, quantity) if quantity > 0
+      @order.add_variant(Variant.find(variant_id), product_customizations, quantity) if quantity > 0
     end if params[:variants]
 
     respond_with(@order) { |format| format.html { redirect_to cart_path } }
