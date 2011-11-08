@@ -33,7 +33,6 @@ class Calculator::ProductArea < Calculator
 #                                                         :required => true}).to_json
 #                                      ),
 
-
      CustomizableProductOption.create(:name=>"height", :presentation=>"Height") # ,
 #                                      :data_validation=>(
 #                                                         {:type => :decimal, :min => :min_height, :max => :max_height,

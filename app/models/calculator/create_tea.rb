@@ -38,7 +38,7 @@ class Calculator::CreateTea < Calculator
   def create_options
     ####################### FRUIT ######################
     [
-     CustomizableProductOption.create(:name=>"appel", :presentation=>"Appel", :data_validation=>({:max => :max_amount}).to_json),
+     CustomizableProductOption.create(:name=>"appel", :presentation=>"Appel",
     CustomizableProductOption.create(:name=>"papaya", :presentation=>"Papaya"), #,
     CustomizableProductOption.create(:name=>"zonneroosjes", :presentation=>"Zonneroosjes"), #,
     CustomizableProductOption.create(:name=>"sinaasappelschillen", :presentation=>"Sinaasappelschillen"), #,
@@ -100,7 +100,7 @@ class Calculator::CreateTea < Calculator
 		#appel = get_option(product_customization, "appel")
 		#papaya = get_option(product_customization, "papaya")
 		#return false unless (appel.value.to_i + papaya.value.to_i) > 9
-	    true
+	    return true
   end
   
   def get_option(product_customization, name)
