@@ -1,5 +1,5 @@
-<% # render the (possibly shared) calculator %>
-<% ## FRUIT ## %>
+<%# render the (possibly shared) calculator %>
+<%## FRUIT ## %>
 <% class_appel = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("appel").name}" %>
 <% class_papaya = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("papaya").name}" %>
 <% class_zonneroosjes = "create_tea_#{product_customization_type.customizable_product_options.find_by_name("zonneroosjes").name}" %>
@@ -25,7 +25,7 @@
 <%= render :partial => "products/customizations/calculator/#{calculator_name(product_customization_type)}",
            :locals => {:calculator=>product_customization_type.calculator} %>
 
-  <% # add the 'change' listener for this particular file input, which will make use of the calculator above %>
+  <%# add the 'change' listener for this particular file input, which will make use of the calculator above %>
 
   <% content_for :head do %>
   <%= stylesheet_link_tag 'jquery-ui', 'progressbar' %>
@@ -118,14 +118,14 @@ option:hover {
 	<table style="width: 266px;">
 	<th>Melange</th><th>Toevoegen</th><th>Prijs&nbsp;5g</th>
 	<tr>
-          <% # APPEL # %>
+          <%# APPEL # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("appel") %>
       		<td><label for="<%= class_appel %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_appel %></td><td><strong class="opt_desc"><%= option.description %></strong></td>
     </tr>
     <tr>
     <li>
-    	<% # PAPAYA # %>
+    	<%# PAPAYA # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("papaya") %>
       	<td><label for="<%= class_papaya %>"><%= option.presentation %><%= option.description %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_papaya %></td><td><%= option.description %></td>
@@ -133,7 +133,7 @@ option:hover {
     </tr>
     <tr>
     <li>
-    	<% # ZONNEROOSJES # %>
+    	<%# ZONNEROOSJES # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("zonneroosjes") %>
       	<td><label for="<%= class_zonneroosjes %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_zonneroosjes %></td><td><%= option.description %></td>
@@ -141,7 +141,7 @@ option:hover {
     </tr>
     <tr>
 	<li>
-    	<% # SINAASAPPELSCHILLEN # %>
+    	<%# SINAASAPPELSCHILLEN # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("sinaasappelschillen") %>
       	<td><label for="<%= class_sinaasappelschillen %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_sinaasappelschillen %><td></td><%= option.description %></td>
@@ -149,7 +149,7 @@ option:hover {
 	</tr>
 	<tr>
 	<li>
-    <% # brandnetel # %>
+    <%# brandnetel # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("brandnetel") %>
       	<td><label for="<%= class_brandnetel %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_brandnetel %><td></td><%= option.description %></td>
@@ -157,7 +157,7 @@ option:hover {
     </tr>
     <tr>
 	<li>
-    <% # ginkgo # %>
+    <%# ginkgo # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("ginkgo") %>
       	<td><label for="<%= class_ginkgo %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_ginkgo %><td></td><%= option.description %></td>
@@ -165,7 +165,7 @@ option:hover {
     </tr>
     <tr>
     <li>        
-    <% # lemongrass # %>
+    <%# lemongrass # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("lemongrass") %>
       	<td><label for="<%= class_lemongrass %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_lemongrass %><td></td><%= option.description %></td>
@@ -173,7 +173,7 @@ option:hover {
     </tr>
     <tr>  
     <li>        
-    <% # nanamint # %>
+    <%# nanamint # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("nanamint") %>
       	<td><label for="<%= class_nanamint %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_nanamint %></td><td><%= option.description %></td>
@@ -181,7 +181,7 @@ option:hover {
     </tr>
     <tr>  
      <li>        
-    <% # sagebladeren # %>
+    <%# sagebladeren # %>
       <% option = product_customization_type.customizable_product_options.find_by_name("sagebladeren") %>
       	<td><label for="<%= class_sagebladeren %>"><%= option.presentation %></label></td>
       		<td><%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_sagebladeren %></td><td><%= option.description %></td>
@@ -189,14 +189,14 @@ option:hover {
     </tr>
     </table>
 	</div>
-    <% # KRUIDEN # %>
+    <%# KRUIDEN # %>
   	<div id="customblend_tab">     
 	<legend>Kruiden</legend>
 	<table>
 	<th>Melange</th><th>Toevoegen</th><th>Prijs&nbsp;5g</th>
 	<tr>
     <li>
-      <% # Maretak # %>
+      <%# Maretak # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("maretak") %>
       		<td><label for="<%= class_maretak %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_maretak %></td><td><strong><%= option.description %></strong></td>
@@ -205,7 +205,7 @@ option:hover {
     </tr>
     <tr>
     <li>
-      <% # Karwij # %>
+      <%# Karwij # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("karwij") %>
       		<td><label for="<%= class_karwij %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_karwij %></td><td><%= option.description %></td>
@@ -214,7 +214,7 @@ option:hover {
     </tr>
     <tr>
     <li>
-      <% # Venkel # %>
+      <%# Venkel # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("venkel") %>
       		<td><label for="<%= class_venkel %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_venkel %></td><td><%= option.description %></td>
@@ -223,7 +223,7 @@ option:hover {
     </tr>
     <tr>
     <li>
-      <% # Groene haver # %>
+      <%# Groene haver # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("groenehaver") %>
       		<td><label for="<%= class_groenehaver %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_groenehaver %></td><td><%= option.description %></td>
@@ -232,7 +232,7 @@ option:hover {
     </tr>
     <tr> 
     <li>
-      <% # Hibiscus Bloesem # %>
+      <%# Hibiscus Bloesem # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("hibiscusbloesem") %>
       		<td><label for="<%= class_hibiscusbloesem %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_hibiscusbloesem %></td><td><%= option.description %></td>
@@ -241,7 +241,7 @@ option:hover {
     </tr>
     <tr>              
     <li>
-      <% # Anijszaad # %>
+      <%# Anijszaad # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("anijszaad") %>
       		<td><label for="<%= class_anijszaad %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_anijszaad %></td><td><%= option.description %></td>
@@ -250,7 +250,7 @@ option:hover {
     </tr>
     <tr>
     <li>
-      <% # Kamille # %>
+      <%# Kamille # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("kamille") %>
       		<td><label for="<%= class_kamille %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_kamille %></td><td><%= option.description %></td>
@@ -265,7 +265,7 @@ option:hover {
 	<th>Melange</th><th>Toevoegen</th><th>Prijs&nbsp;5g</th>
 	<tr>
 	<li>
-      <% # Bamboobladeren # %>
+      <%# Bamboobladeren # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("bamboobladeren") %>
       		<td><label for="<%= class_bamboobladeren %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_bamboobladeren %></td><td><%= option.description %></td>
@@ -274,7 +274,7 @@ option:hover {
     </tr>
     <tr>
     <li>
-      <% # Pepermuntblad # %>
+      <%# Pepermuntblad # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("pepermuntblad") %>
       		<td><label for="<%= class_pepermuntblad %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_pepermuntblad %></td><td><%= option.description %></td>
@@ -283,17 +283,17 @@ option:hover {
     </tr>
     <tr>
     <li>
-      <% # Rozenbladeren # %>
+      <%# Rozenbladeren # %>
       	<% option = product_customization_type.customizable_product_options.find_by_name("rozenbladeren") %>
       		<td><label for="<%= class_rozenbladeren %>"><%= option.presentation %></td><td>
       		<%= select_tag "#{param_prefix}[#{option.id}]", raw("<option value=''>Geen</option><option value='1'>5 gram</option><option value='2'>10 gram</option><option value='3'>15 gram</option><option value='4'>20 gram</option><option value='5'>25 gram</option><option value='6'>30 gram</option><option value='7'>35 gram</option><option value='8'>40 gram</option>"), :class => class_rozenbladeren %></td><td><%= option.description %></td>
       </label>  
     </li>
 	</tr>
-    <% # the price is stored here on change, and later collected by the product-wide updatePrice() %>
+    <%# the price is stored here on change, and later collected by the product-wide updatePrice() %>
     </table>
     </div>
  </ul>    
     <%#=hidden_field_tag "maxam", "0", :class => "maxam" %>
     <%#=hidden_field_tag "customization_price", "0", :class => "customization_price" %>
-<% end # field_set_tag %>
+<% end %>
