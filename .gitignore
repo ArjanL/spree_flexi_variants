@@ -8,3 +8,5 @@ tmp
 nbproject
 *.swp
 doc/notes.txt
+
+app/models/calculator/create_tea.rb
