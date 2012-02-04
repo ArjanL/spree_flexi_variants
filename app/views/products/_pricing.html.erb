@@ -55,15 +55,16 @@
       $("#product-customizations").change(function() {
      		
         updatePrice();
-        //updateAmount();
+        updateAmount();
       });
 
       // 'watch' our configurations
-      $('create-tea-select').change(function() {
+      $(".ad-hoc-option-select").change(function() {
 			
         // get _every_ option drop down and recalculate product price
         // do this immediately, since we are not waiting on the results of the exlusions post
         updatePrice();
+        //updateAmount();
       });
 
       updatePrice(); // set the initial price
@@ -96,11 +97,18 @@
 // TEA
   function compute_configuration_price() {
     var configuration_price=0;
-    var max_amount=$('#maxam').val();
 	// APPEL
     $(".create_tea_appel option:selected").each(function() {
       var amount=$(this).val();
       var naam= 'appel';
+      if (isNumeric(amount)) {
+        configuration_price+=(calculate_create_tea_price(amount, naam));
+      }
+    });
+   // Ananas
+   $(".create_tea_ananas option:selected").each(function() {
+      var amount=$(this).val();
+      var naam= 'ananas';
       if (isNumeric(amount)) {
         configuration_price+=(calculate_create_tea_price(amount, naam));
       }
@@ -276,6 +284,11 @@
     return price;
   }
 
+ // function updateAmount() {
+   //	var max_am = compute_configuration_price(max_amount);
+   	//$('.max_amount').text(max_am);
+   //}  
+
   function updatePrice() {
 
     var cur_variant_price_diff = compute_variant_price_diff(base_price);
@@ -291,5 +304,5 @@
   //]]>
   </script>
 <% end %>
-<%# end if Spree::FlexiVariants::Config[:use_javascript_pricing_updates] %>
+<% # end if Spree::FlexiVariants::Config[:use_javascript_pricing_updates] %>
 <% end %>
