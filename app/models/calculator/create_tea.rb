@@ -4,7 +4,7 @@ class Calculator::CreateTea < Calculator
   preference :appel, :decimal
   preference :ananas, :decimal
   preference :papaya, :decimal
-  preference :rozenbottel, :decimal
+  preference :zonneroosjes, :decimal
   preference :sinaasappelschillen, :decimal
   preference :brandnetel, :decimal
   preference :ginkgo, :decimal
@@ -42,7 +42,7 @@ class Calculator::CreateTea < Calculator
      CustomizableProductOption.create(:name=>"appel", :presentation=>"Appel"),
     CustomizableProductOption.create(:name=>"ananas", :presentation=>"Ananas"),
     CustomizableProductOption.create(:name=>"papaya", :presentation=>"Papaya"),
-    CustomizableProductOption.create(:name=>"rozenbottel", :presentation=>"Rozenbottel"),
+    CustomizableProductOption.create(:name=>"zonneroosjes", :presentation=>"zonneroosjes"),
     CustomizableProductOption.create(:name=>"sinaasappelschillen", :presentation=>"Sinaasappelschillen"),
     CustomizableProductOption.create(:name=>"brandnetel", :presentation=>"Brandnetel"),
     CustomizableProductOption.create(:name=>"ginkgo", :presentation=>"Ginkgo"),
@@ -74,7 +74,7 @@ class Calculator::CreateTea < Calculator
 			appel = get_option(product_customization, "appel")
 			ananas = get_option(product_customization, "ananas")
 			papaya = get_option(product_customization, "papaya")
-			rozenbottel = get_option(product_customization, "rozenbottel")
+			zonneroosjes = get_option(product_customization, "zonneroosjes")
 			sinaasappelschillen = get_option(product_customization, "sinaasappelschillen")
 			brandnetel = get_option(product_customization, "brandnetel")		
 			ginkgo = get_option(product_customization, "ginkgo")	
@@ -96,7 +96,7 @@ class Calculator::CreateTea < Calculator
 			
 			# Calculator => amount x price
 			# FRUIT #
-			(appel.value.to_f * preferred_appel) + (ananas.value.to_f * preferred_ananas) + (papaya.value.to_f * preferred_papaya) + (rozenbottel.value.to_f * preferred_rozenbottel) + (sinaasappelschillen.value.to_f * preferred_sinaasappelschillen) + (brandnetel.value.to_f * preferred_brandnetel) + (ginkgo.value.to_f * preferred_ginkgo) + (lemongrass.value.to_f * preferred_lemongrass) + (nanamint.value.to_f * preferred_nanamint) + (sagebladeren.value.to_f * preferred_sagebladeren) + (maretak.value.to_f * preferred_maretak) + (karwij.value.to_f * preferred_karwij) + (venkel.value.to_f * preferred_venkel) + (groenehaver.value.to_f * preferred_groenehaver) + (hibiscusbloesem.value.to_f * preferred_hibiscusbloesem) + (anijszaad.value.to_f * preferred_anijszaad) + (kamille.value.to_f * preferred_kamille) + (bamboobladeren.value.to_f * preferred_bamboobladeren) + (rozenbladeren.value.to_f * preferred_rozenbladeren) + (pepermuntblad.value.to_f * preferred_pepermuntblad)      
+			(appel.value.to_f * preferred_appel) + (ananas.value.to_f * preferred_ananas) + (papaya.value.to_f * preferred_papaya) + (zonneroosjes.value.to_f * preferred_zonneroosjes) + (sinaasappelschillen.value.to_f * preferred_sinaasappelschillen) + (brandnetel.value.to_f * preferred_brandnetel) + (ginkgo.value.to_f * preferred_ginkgo) + (lemongrass.value.to_f * preferred_lemongrass) + (nanamint.value.to_f * preferred_nanamint) + (sagebladeren.value.to_f * preferred_sagebladeren) + (maretak.value.to_f * preferred_maretak) + (karwij.value.to_f * preferred_karwij) + (venkel.value.to_f * preferred_venkel) + (groenehaver.value.to_f * preferred_groenehaver) + (hibiscusbloesem.value.to_f * preferred_hibiscusbloesem) + (anijszaad.value.to_f * preferred_anijszaad) + (kamille.value.to_f * preferred_kamille) + (bamboobladeren.value.to_f * preferred_bamboobladeren) + (rozenbladeren.value.to_f * preferred_rozenbladeren) + (pepermuntblad.value.to_f * preferred_pepermuntblad)      
   end
 
   def valid_configuration?(product_customization)
